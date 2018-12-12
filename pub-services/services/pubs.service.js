@@ -3,6 +3,7 @@ var pubs = require('../mocks/pubs.json')
 var moment = require('moment')
 
 function getAllPubs(){
+    console.log(pubs)
     return pubs;
 }
 
