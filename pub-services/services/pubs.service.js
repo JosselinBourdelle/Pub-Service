@@ -1,14 +1,19 @@
 
-var pubs = require('../mocks/pubs.json')
-var moment = require('moment')
+const pubs = require('../mocks/pubs.json')
+const moment = require('moment')
+const pubModel = require("../model/Pub.js")
 
 function getAllPubs(){
-    console.log(pubs)
-    return pubs;
+    const pubsToReturn = []
+    pubs.forEach(pub => {
+        pubsToReturn.push(new pubModel.Pub(pub.name, pub.owner, pub.openDays, pub.openHours, pub.beers))
+    });
+    console.log(pubsToReturn);
+    return pubsToReturn;
 }
 
 function getAllPubsByOpenDays() {
-    var pubsToReturn = []
+    const pubsToReturn = []
     pubs.forEach(pub => {
         if(pub.openDays.includes(moment().format('dddd'))){
             pubsToReturn.push(pub)
